@@ -1,18 +1,23 @@
 <script setup>
-import {ref} from 'vue'
+import {ref, reactive} from 'vue'
 
-let number = ref(0)
+const form = reactive({
+  name: "Amrito",
+  password: "password"
+})
 
-setInterval(() => {
+// let name = ref("Amrito")
 
- number.value++
-}, 1000)
+// setInterval(() => {
+// name.value = "Sakib"
+// }, 1000)
 
 
 </script>
 
 <template>
- {{ number }}
+ {{ form.name }} {{ form.password }}
+  <!-- {{ name }} -->
 </template>
 
 <style scoped>
