@@ -1,25 +1,30 @@
 <script setup>
-import {ref, reactive} from 'vue'
+import { ref, reactive } from "vue";
+// let name = ref("Amrito Bosu")
+
+// let email = ref("");
+// let password = ref("");
 
 const form = reactive({
-  name: "Amrito",
-  password: "password"
+  email: "",
+  password: ""
 })
-
-// let name = ref("Amrito")
-
-// setInterval(() => {
-// name.value = "Sakib"
-// }, 1000)
-
 
 </script>
 
 <template>
- {{ form.name }} {{ form.password }}
-  <!-- {{ name }} -->
+  <div>
+    <!-- <input type="text" v-model="name"><br> -->
+    <!-- <p>{{ name }}</p> -->
+
+    <form action="">
+      <input type="text" v-model="form.email" name="email" placeholder="Enter Email" /><br />
+      <br />
+      <input type="text" v-model="form.password" name="password" placeholder="Enter Password" />
+    </form>
+    {{ form.email }} / {{ form.password }}
+  </div>
 </template>
 
 <style scoped>
-
 </style>
