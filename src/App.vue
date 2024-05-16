@@ -1,34 +1,19 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed } from "vue"
 
-const password = ref("");
+const zip = ref("")
 
-const passwordStrength = computed(() => {
-  let strength = (password.value.length * 100) / 10;
-  return Math.min(strength, 100);
-});
+const zipUppercase = computed({
+ get: () => zip.value.toUpperCase(),
+ set: value => { zip.value = value.toUpperCase() }
+})
 
-let firstName = ref("");
-let lastName = ref("");
-
-const fullName = computed(() => {
-  let fullName = firstName.value + " " + lastName.value;
-  return fullName;
-});
 </script>
 
 <template>
   <div>
-    <input
-      type="password"
-      v-model="password"
-      placeholder="Enter Your Password"
-    />
-    {{ passwordStrength }}<span>% Strong</span>
-    <hr />
-    <input type="text" v-model="firstName" placeholder="Enter Your firstName" />
-    <input type="text" v-model="lastName" placeholder="Enter Your lastName" />
-    {{ fullName }}
+    <input type="text" v-model="zipUppercase">
+    {{ zip }}
   </div>
 </template>
 
