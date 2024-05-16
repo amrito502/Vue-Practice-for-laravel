@@ -1,20 +1,36 @@
 <script setup>
-import {ref} from 'vue'
-import useNumbers from './number'
-let number = ref(0)
+import {ref, onMounted, onUpdated} from 'vue'
 
-const {increment, decrement} = useNumbers(number)
+const users = ref([])
+
+function getUsers(){
+  users.value = [
+    {
+      id: 1,
+      name: "Amrito Bosu"
+    },
+     {
+      id: 2,
+      name: "Sakib"
+    },
+  ]
+}
+
+onMounted(() => {
+  getUsers()
+})
+
+onUpdated(() => {
+
+})
 
 </script>
 
 <template>
-   {{ number }}
-   <button @click="increment">Increment</button>
-   <button @click="decrement">Decrement</button>
-
-   <!-- <button @click="number++">+</button>
-   <button @click="number--">-</button>
-</template> -->
+  <div>
+    <div v-for="user in users" :key="user.id">{{user.name}}</div>
+  </div>
+</template>
 
 <style scoped>
 
