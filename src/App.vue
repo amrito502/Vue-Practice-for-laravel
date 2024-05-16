@@ -1,37 +1,36 @@
 <script setup>
-import {ref, onMounted, onUpdated} from 'vue'
+import { ref, computed } from "vue";
 
-const users = ref([])
+const password = ref("");
 
-function getUsers(){
-  users.value = [
-    {
-      id: 1,
-      name: "Amrito Bosu"
-    },
-     {
-      id: 2,
-      name: "Sakib"
-    },
-  ]
-}
+const passwordStrength = computed(() => {
+  let strength = (password.value.length * 100) / 10;
+  return Math.min(strength, 100);
+});
 
-onMounted(() => {
-  getUsers()
-})
+let firstName = ref("");
+let lastName = ref("");
 
-onUpdated(() => {
-
-})
-
+const fullName = computed(() => {
+  let fullName = firstName.value + " " + lastName.value;
+  return fullName;
+});
 </script>
 
 <template>
   <div>
-    <div v-for="user in users" :key="user.id">{{user.name}}</div>
+    <input
+      type="password"
+      v-model="password"
+      placeholder="Enter Your Password"
+    />
+    {{ passwordStrength }}<span>% Strong</span>
+    <hr />
+    <input type="text" v-model="firstName" placeholder="Enter Your firstName" />
+    <input type="text" v-model="lastName" placeholder="Enter Your lastName" />
+    {{ fullName }}
   </div>
 </template>
 
 <style scoped>
-
 </style>
